@@ -59,7 +59,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener,
         val bundle = intent.extras
         if (bundle != null) {
             mtaskId = bundle.getInt(TaskConstants.BUNDLE.TASKID)
-            mViewModel.load(taskId)
+            mViewModel.load(mtaskId)
         }
     }
 

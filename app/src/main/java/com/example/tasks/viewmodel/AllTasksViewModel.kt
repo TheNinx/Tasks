@@ -33,4 +33,39 @@ class AllTasksViewModel(application: Application) : AndroidViewModel(application
     }
 
 
+
+    fun complete(id:Int){
+        updateStatus(id,true)
+    }
+
+    fun undo(id: Int){
+       updateStatus(id,false)
+    }
+    fun updateStatus(id: Int,complete:Boolean){
+        mTaskRepository.updateStatus(id,complete,object : APIListener<Boolean>{
+            override fun onSuccess(model: Boolean) {
+                list()
+            }
+
+            override fun onFailure(toString: String) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    fun delete(id: Int) {
+        mTaskRepository.delete(id,object : APIListener<Boolean>{
+            override fun onSuccess(model: Boolean) {
+                list()
+            }
+
+            override fun onFailure(toString: String) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+
 }
